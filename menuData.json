@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Classic Margherita",
+    "description": "Fresh tomato sauce, mozzarella di bufala, fresh basil, and extra virgin olive oil.",
+    "price": 12.99,
+    "category": "Veg",
+    "imageUrl": "https://images.unsplash.com/photo-1574071318508-1cdbad80ad50?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "name": "Spicy Pepperoni",
+    "description": "Zesty pepperoni, mozzarella, tomato sauce, and a drizzle of hot honey.",
+    "price": 14.99,
+    "category": "Non-Veg",
+    "imageUrl": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "name": "Garden Special",
+    "description": "Bell peppers, onions, mushrooms, black olives, and sweet corn on a thin crust.",
+    "price": 13.50,
+    "category": "Veg",
+    "imageUrl": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    "name": "BBQ Chicken",
+    "description": "Grilled chicken, red onions, cilantro, and tangy BBQ sauce.",
+    "price": 15.99,
+    "category": "Non-Veg",
+    "imageUrl": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=800"
+  }
+]

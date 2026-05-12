@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "MenuItem": {
+      "title": "Menu Item",
+      "description": "A pizza or other food item on the menu.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the dish" },
+        "description": { "type": "string", "description": "Ingredients or details" },
+        "price": { "type": "number", "description": "Price in local currency" },
+        "category": { "type": "string", "description": "Category like Veg, Non-Veg, Sides" },
+        "imageUrl": { "type": "string", "description": "URL to the item image" }
+      },
+      "required": ["name", "price", "category"]
+    },
+    "GalleryImage": {
+      "title": "Gallery Image",
+      "description": "An image for the restaurant gallery.",
+      "type": "object",
+      "properties": {
+        "imageUrl": { "type": "string", "description": "URL to the image" },
+        "caption": { "type": "string", "description": "Optional caption" }
+      },
+      "required": ["imageUrl"]
+    },
+    "Review": {
+      "title": "Customer Review",
+      "description": "Feedback from a customer.",
+      "type": "object",
+      "properties": {
+        "customerName": { "type": "string", "description": "Name of the customer" },
+        "rating": { "type": "number", "description": "Rating from 1 to 5" },
+        "comment": { "type": "string", "description": "Customer's feedback" },
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the review was submitted" }
+      },
+      "required": ["rating", "comment", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/menu/{itemId}": {
+      "schema": "MenuItem",
+      "description": "Collection of menu items."
+    },
+    "/gallery/{imageId}": {
+      "schema": "GalleryImage",
+      "description": "Collection of gallery images."
+    },
+    "/reviews/{reviewId}": {
+      "schema": "Review",
+      "description": "Collection of customer reviews (Admin only read)."
+    }
+  }
+}

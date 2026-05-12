@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.email == "vidhyakumawat1001@gmail.com" && request.auth.token.email_verified == true);
+    }
+
+    function isValidMenuItem(data) {
+      return data.name is string && data.name.size() > 0 &&
+             data.price is number && data.price >= 0 &&
+             data.category is string;
+    }
+
+    function isValidReview(data) {
+      return data.rating is number && data.rating >= 1 && data.rating <= 5 &&
+             data.comment is string && data.comment.size() > 0 &&
+             data.timestamp is string;
+    }
+
+    // Menu: Public read, Admin write
+    match /menu/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin() && isValidMenuItem(request.resource.data);
+    }
+
+    // Gallery: Public read, Admin write
+    match /gallery/{imageId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Reviews: Public create, Admin read/delete
+    match /reviews/{reviewId} {
+      allow create: if isValidReview(request.resource.data);
+      allow read, delete: if isAdmin();
+      allow update: if false;
+    }
+  }
+}
