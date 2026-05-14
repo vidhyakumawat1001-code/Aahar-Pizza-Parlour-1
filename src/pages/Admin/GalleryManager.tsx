@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { GalleryImage } from '../../types';
 import { api } from '../../services/api';
@@ -192,4 +191,3 @@ function fileToBase64(file: File): Promise<string> {
     reader.readAsDataURL(file);
   });
 }
-EOF
