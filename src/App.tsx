@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Pizza, Menu as MenuIcon, Image as ImageIcon, MessageSquare, Shield, LogOut, X } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { getSettings } from './pages/Admin/SiteSettings';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -88,21 +89,17 @@ function Navbar({ isAdmin, onLogout }: { isAdmin: boolean; onLogout: () => void 
 
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-brand-red flex items-center gap-1.5",
-                  location.pathname === link.path ? "text-brand-red" : "text-stone-600"
-                )}
-              >
+              <Link key={link.path} to={link.path}
+                className={cn("text-sm font-medium transition-colors hover:text-brand-red flex items-center gap-1.5",
+                  location.pathname === link.path ? "text-brand-red" : "text-stone-600")}>
                 <link.icon className="w-4 h-4" />
                 {link.name}
               </Link>
             ))}
             {isAdmin && (
               <>
-                <Link to="/admin" className={cn("text-sm font-medium transition-colors hover:text-brand-red flex items-center gap-1.5", location.pathname.startsWith('/admin') ? "text-brand-red" : "text-stone-600")}>
+                <Link to="/admin" className={cn("text-sm font-medium transition-colors hover:text-brand-red flex items-center gap-1.5",
+                  location.pathname.startsWith('/admin') ? "text-brand-red" : "text-stone-600")}>
                   <Shield className="w-4 h-4" /> Admin
                 </Link>
                 <button onClick={onLogout} className="text-sm font-medium text-stone-500 hover:text-red-600 flex items-center gap-1.5 transition-colors">
@@ -120,18 +117,13 @@ function Navbar({ isAdmin, onLogout }: { isAdmin: boolean; onLogout: () => void 
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-stone-200 overflow-hidden"
-          >
+          <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-b border-stone-200 overflow-hidden">
             <div className="px-4 py-6 space-y-4">
               {navLinks.map((link) => (
                 <Link key={link.path} to={link.path} onClick={() => setIsOpen(false)}
                   className={cn("flex items-center gap-3 text-lg font-medium p-2 rounded-lg",
-                    location.pathname === link.path ? "bg-brand-red/10 text-brand-red" : "text-stone-600"
-                  )}>
+                    location.pathname === link.path ? "bg-brand-red/10 text-brand-red" : "text-stone-600")}>
                   <link.icon className="w-5 h-5" />
                   {link.name}
                 </Link>
@@ -155,6 +147,7 @@ function Navbar({ isAdmin, onLogout }: { isAdmin: boolean; onLogout: () => void 
 }
 
 function Footer() {
+  const settings = getSettings();
   return (
     <footer className="bg-stone-900 text-stone-400 py-12 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -177,9 +170,9 @@ function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-6">Contact Us</h3>
             <ul className="space-y-3 text-sm">
-              <li>123 Pizza Lane, Foodie City</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Email: hello@aaharpizza.com</li>
+              <li>{settings.address}</li>
+              <li>Phone: {settings.phone}</li>
+              <li>Email: {settings.email}</li>
             </ul>
           </div>
         </div>
