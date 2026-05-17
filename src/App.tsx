@@ -88,8 +88,6 @@ function Navbar({ isAdmin, onLogout }: { isAdmin: boolean; onLogout: () => void 
     { name: 'Review', path: '/review', icon: MessageSquare },
   ];
 
-  if (isAdmin) {
-    navLinks.push({ name: 'Admin', path: '/admin', icon: Shield });
   }
 
   return (

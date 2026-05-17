@@ -95,7 +95,7 @@ export default function MenuPage() {
             <div className="p-8 space-y-4">
               <div className="flex justify-between items-start">
                 <h3 className="text-xl font-bold group-hover:text-brand-red transition-colors">{item.name}</h3>
-                <span className="text-xl font-black text-stone-900">₹₹{item.price.toFixed(2)}</span>
+                <span className="text-xl font-black text-stone-900">₹{item.price.toFixed(2)}</span>
               </div>
               <p className="text-stone-500 text-sm leading-relaxed line-clamp-2">
                 {item.description}
