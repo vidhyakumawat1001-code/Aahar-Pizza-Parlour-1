@@ -1,0 +1,23 @@
+[
+  {
+    "customerName": "vidhya",
+    "rating": 4,
+    "comment": "this is good.",
+    "id": "1778779640106",
+    "timestamp": "2026-05-14T17:27:20.106Z"
+  },
+  {
+    "customerName": "vidhya",
+    "rating": 4,
+    "comment": "the taste of pizza is good\n",
+    "id": "1778780464343",
+    "timestamp": "2026-05-14T17:41:04.343Z"
+  },
+  {
+    "customerName": "vidhya ",
+    "rating": 3,
+    "comment": "it is good in taste.",
+    "id": "1779027794487",
+    "timestamp": "2026-05-17T14:23:14.487Z"
+  }
+]

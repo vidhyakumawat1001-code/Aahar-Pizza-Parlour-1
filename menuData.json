@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "name": "veg cheese grill",
+    "description": "",
+    "price": 120,
+    "category": "Veg",
+    "imageUrl": "/uploads/1779030155234-13238017.jpeg",
+    "id": "1779030155364"
+  },
+  {
+    "name": "veg cheese pizza",
+    "description": "",
+    "price": 100,
+    "category": "Veg",
+    "imageUrl": "/uploads/1779030948760-793921160.jpeg",
+    "id": "1779030949012"
+  }
+]
