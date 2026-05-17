@@ -1,9 +1,8 @@
 import { MenuItem, GalleryImage, Review } from '../types';
-
+ 
 const API_BASE = '/api';
-
+ 
 export const api = {
-  // Menu
   async getMenu(): Promise<MenuItem[]> {
     const res = await fetch(`${API_BASE}/menu`);
     return res.json();
@@ -19,8 +18,7 @@ export const api = {
   async deleteMenuItem(id: string): Promise<void> {
     await fetch(`${API_BASE}/menu/${id}`, { method: 'DELETE' });
   },
-
-  // Gallery
+ 
   async getGallery(): Promise<GalleryImage[]> {
     const res = await fetch(`${API_BASE}/gallery`);
     return res.json();
@@ -36,8 +34,7 @@ export const api = {
   async deleteGalleryImage(id: string): Promise<void> {
     await fetch(`${API_BASE}/gallery/${id}`, { method: 'DELETE' });
   },
-
-  // Reviews
+ 
   async getReviews(): Promise<Review[]> {
     const res = await fetch(`${API_BASE}/reviews`);
     return res.json();
@@ -50,8 +47,10 @@ export const api = {
     });
     return res.json();
   },
-
-  // Upload
+  async deleteReview(id: string): Promise<void> {
+    await fetch(`${API_BASE}/reviews/${id}`, { method: 'DELETE' });
+  },
+ 
   async uploadPhoto(file: File): Promise<string> {
     const formData = new FormData();
     formData.append('file', file);

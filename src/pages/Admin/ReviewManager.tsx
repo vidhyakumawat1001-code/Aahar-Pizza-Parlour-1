@@ -24,9 +24,13 @@ export default function ReviewManager() {
   }, []);
 
   const handleDelete = async (id: string) => {
-    // Note: I need to add a deleteReview to api service if I want this to work properly
-    // For now, I'll just alert that this local version doesn't support delete yet or implement it in server.
-    alert("Delete review is not yet implemented in the local API.");
+    if (!window.confirm('Delete this review?')) return;
+    try {
+      await api.deleteReview(id);
+      await loadReviews();
+    } catch (error) {
+      alert("Failed to delete review: " + error);
+    }
   };
 
   if (loading) return <div className="animate-pulse space-y-4"><div className="h-8 w-48 bg-stone-100 rounded-lg" /><div className="h-64 bg-stone-50 rounded-2xl" /></div>;
@@ -66,16 +70,25 @@ export default function ReviewManager() {
               </div>
               <div className="flex items-center gap-1">
                 {[1, 2, 3, 4, 5].map(star => (
-                  <Star 
-                    key={star} 
-                    className={`w-5 h-5 ${star <= review.rating ? 'fill-orange-500 text-orange-500' : 'text-stone-200'}`} 
+                  <Star
+                    key={star}
+                    className={`w-5 h-5 ${star <= review.rating ? 'fill-orange-500 text-orange-500' : 'text-stone-200'}`}
                   />
                 ))}
               </div>
             </div>
-            
+
             <div className="bg-white p-6 rounded-2xl border border-stone-100 text-stone-600 leading-relaxed italic">
               "{review.comment}"
+            </div>
+
+            <div className="flex justify-end mt-4">
+              <button
+                onClick={() => handleDelete(review.id!)}
+                className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-red-500 bg-red-50 hover:bg-red-100 rounded-xl transition-colors"
+              >
+                <Trash2 className="w-3.5 h-3.5" /> Delete Review
+              </button>
             </div>
           </motion.div>
         ))}
