@@ -25,7 +25,6 @@ export default function Home() {
             className="max-w-2xl space-y-6"
           >
             <span className="inline-block px-4 py-1.5 bg-brand-yellow text-brand-red text-xs font-bold tracking-widest uppercase rounded-full">
-              Authentic Italian Taste
             </span>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
               Aahar Pizza <br />
