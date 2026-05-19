@@ -53,7 +53,7 @@ export default function Home() {
           {[
             { icon: Pizza, title: "Fresh Ingredients", desc: "We source our vegetables and meats daily from local organic farms." },
             { icon: Clock, title: "Fast Delivery", desc: "Hot and fresh pizza delivered to your doorstep within 30 minutes." },
-            { icon: Star, title: "Award Winning", desc: "Voted the best pizza parlour in the city for three consecutive years." }
+            { icon: Star, title: "Since 2002", desc: "Serving delicious pizzas with love and passion since 2002." }
           ].map((feature, i) => (
             <motion.div
               key={i}
