@@ -23,4 +23,3 @@ The app uses a custom "Warm & Appetizing" palette:
 - **Menu Hover:** Hover over any pizza card to see a subtle lift and color change.
 - **Gallery Lightbox:** Click any photo in the gallery to open it in a full-screen "zoom" view.
 
-Enjoy managing your parlour!
